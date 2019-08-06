@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<base href="/">
+	<!--<base href="/focus-trap/">-->
+	<title>@a11y/focus-trap</title>
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+	<style>
+		:focus {
+			outline: 2px solid blue;
+		}
+
+		focus-trap {
+			display: inline-block;
+			border-radius: 6px;
+			padding: 24px;
+			border: 1px solid grey;
+		}
+
+		focus-trap:not([inactive]) {
+			background: rgba(0, 0, 0, 0.1);
+		}
+
+		#label {
+			opacity: 0.5;
+		}
+
+		section {
+			margin: 50px auto;
+			max-width: 450px;
+		}
+
+	</style>
+</head>
+<body>
+
+	<section>
+		<h2>@a11y/focus-trap</h2>
+		<p>Tab around this demo and notice how your focus is trapped.</p>
+
+		<p>Here's some <a href="#">focusable</a> <a href="#">parts</a> outside the trap.</p>
+
+		<focus-trap>
+			<p>Here's a focus trap <a href="#">with</a> <a href="#">some</a> <a href="#">focusable</a> parts.</p>
+			<button id="button">Disable focus trap</button>
+		</focus-trap>
+
+		<p>Here's some more <a href="#">focusable</a> <a href="#">parts</a> outside the trap.</p>
+
+		<p id="label">If you are having troubles with the focus ring being invisible in Safari or Firefox you need to activate the accessibility settings in the browser. Read more <a href="http://forums.devshed.com/html-programming-1/safari-submit-button-wont-focus-tab-key-effectively-488012.html" target="_blank">here</a> or <a href="https://stackoverflow.com/questions/11704828/how-to-allow-keyboard-focus-of-links-in-firefox" target="_blank">here</a> if you are interested in learning more.</p>
+
+		<a href="https://github.com/andreasbm/focus-trap">Source</a>
+
+	</section>
+
+	<noscript>
+		<p>Please enable Javascript in your browser.</p>
+	</noscript>
+
+
+	<script>
+		const $btn = document.querySelector("#button");
+		const $focusTrap = document.querySelector("focus-trap");
+		let inactive = false;
+
+		$btn.addEventListener("click", () => {
+			inactive = !inactive;
+			$focusTrap.inactive = inactive;
+			$btn.innerText = inactive ? "Enable focus trap" : "Disable focus trap";
+		});
+
+	</script>
+<script src="main-9aedf710.js" type="module"></script>
+</body>
+</html>
